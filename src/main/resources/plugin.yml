@@ -1,0 +1,13 @@
+name: ArmorStandGui
+main: dev.finny.armorstandgui.ArmorStandGui
+version: ${java.version}
+api-version: "1.20"
+author: Finny
+description: A plugin that adds a gui to make a customized armor stand
+
+commands:
+  armorstand:
+    aliases:
+      - as
+    usage: /<command>
+    description: Create a armor stand
