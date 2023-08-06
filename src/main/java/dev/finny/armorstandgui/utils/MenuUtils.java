@@ -13,6 +13,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 
 public class MenuUtils {
+
     public static void openMainMenu(Player p) {
         Inventory main_menu = Bukkit.createInventory(p, 9, Component.text("Armor Stand Gui", TextColor.color(5592575)));
 
@@ -122,5 +123,9 @@ public class MenuUtils {
         confirm_menu.setItem(15, yes);
 
         p.openInventory(confirm_menu);
+    }
+
+    public static void openArmorMenu(Player p) {
+        // TODO: CREATE ARMOR MENU
     }
 }
