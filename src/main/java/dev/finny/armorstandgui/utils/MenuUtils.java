@@ -126,6 +126,24 @@ public class MenuUtils {
     }
 
     public static void openArmorMenu(Player p) {
-        // TODO: CREATE ARMOR MENU
+        Inventory armor_menu = Bukkit.createInventory(p, 45,
+                Component.text("Choose some Armor", TextColor.color(5592575)));
+
+        ItemStack head = new ItemStack(Material.DIAMOND_HELMET);
+        ItemStack body = new ItemStack(Material.DIAMOND_CHESTPLATE);
+        ItemStack legs = new ItemStack(Material.DIAMOND_LEGGINGS);
+        ItemStack boots = new ItemStack(Material.DIAMOND_BOOTS);
+
+        ItemStack yes = new ItemStack(Material.GREEN_WOOL);
+        ItemMeta yes_meta = yes.getItemMeta();
+        yes_meta.displayName(Component.text("Done", TextColor.color(5635925)));
+        yes.setItemMeta(yes_meta);
+
+        armor_menu.setItem(11, head);
+        armor_menu.setItem(12, body);
+        armor_menu.setItem(14, legs);
+        armor_menu.setItem(15, boots);
+        armor_menu.setItem(40, yes);
+        p.openInventory(armor_menu);
     }
 }

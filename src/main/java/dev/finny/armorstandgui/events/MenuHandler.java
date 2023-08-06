@@ -7,6 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
 
 import dev.finny.armorstandgui.ArmorStandGui;
 import dev.finny.armorstandgui.utils.MenuUtils;
@@ -19,6 +20,7 @@ public class MenuHandler implements Listener {
     final Component MAIN_MENU_TITLE = Component.text("Armor Stand Gui", TextColor.color(5592575));
     final Component CREATE_MENU_TITLE = Component.text("Create a Armor Stand", TextColor.color(5635925));
     final Component CONFIRM_MENU_TITLE = Component.text("Confirm Option", TextColor.color(5635925));
+    final Component ARMOR_MENU_TITLE = Component.text("Choose some Armor", TextColor.color(5592575));
 
     public MenuHandler(ArmorStandGui plugin) {
         this.plugin = plugin;
@@ -151,6 +153,44 @@ public class MenuHandler implements Listener {
             }
 
             e.setCancelled(true);
+        } else if (TITLE.equals(ARMOR_MENU_TITLE)) {
+            if (!plugin.armorStands.containsKey(p))
+                return;
+            ArmorStand stand = plugin.armorStands.get(p);
+
+            // TODO: Add other than diamond
+            switch (e.getCurrentItem().getType()) {
+                case DIAMOND_HELMET:
+                    if (stand.getEquipment().getHelmet().getType() == Material.DIAMOND_HELMET) {
+                        stand.getEquipment().setHelmet(null);
+                        break;
+                    }
+                    stand.getEquipment().setHelmet(new ItemStack(Material.DIAMOND_HELMET));
+                    break;
+                case DIAMOND_CHESTPLATE:
+                    if (stand.getEquipment().getChestplate().getType() == Material.DIAMOND_CHESTPLATE) {
+                        stand.getEquipment().setChestplate(null);
+                        break;
+                    }
+                    stand.getEquipment().setChestplate(new ItemStack(Material.DIAMOND_CHESTPLATE));
+                    break;
+                case DIAMOND_LEGGINGS:
+                    if (stand.getEquipment().getLeggings().getType() == Material.DIAMOND_LEGGINGS) {
+                        stand.getEquipment().setLeggings(null);
+                        break;
+                    }
+                    stand.getEquipment().setLeggings(new ItemStack(Material.DIAMOND_LEGGINGS));
+                    break;
+                case DIAMOND_BOOTS:
+                    if (stand.getEquipment().getBoots().getType() == Material.DIAMOND_BOOTS) {
+                        stand.getEquipment().setBoots(null);
+                        break;
+                    }
+                    stand.getEquipment().setBoots(new ItemStack(Material.DIAMOND_BOOTS));
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
