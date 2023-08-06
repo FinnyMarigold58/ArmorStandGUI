@@ -70,6 +70,9 @@ public class MenuHandler implements Listener {
                     p.sendMessage("Add Base?");
                     MenuUtils.openConfirmMenu(p, Material.STONE_SLAB);
                     break;
+                case LEATHER_CHESTPLATE:
+                    MenuUtils.openArmorMenu(p);
+                    break;
                 case GREEN_WOOL:
                     p.sendMessage("Create Armor Stand");
                     if (!plugin.armorStands.containsKey(p))
@@ -188,9 +191,13 @@ public class MenuHandler implements Listener {
                     }
                     stand.getEquipment().setBoots(new ItemStack(Material.DIAMOND_BOOTS));
                     break;
+                case GREEN_WOOL:
+                    MenuUtils.openCreateMenu(p);
+                    break;
                 default:
                     break;
             }
+            e.setCancelled(true);
         }
     }
 }
