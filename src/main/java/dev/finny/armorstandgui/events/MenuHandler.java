@@ -27,44 +27,44 @@ public class MenuHandler implements Listener {
                 case ARMOR_STAND:
                     p.sendMessage("Opened Armor Stand Create Menu");
                     MenuUtils.openCreateMenu(p);
-                    return;
+                    break;
                 case BARRIER:
                     p.sendMessage("Closing main menu");
                     p.closeInventory();
-                    return;
+                    break;
                 default:
-                    return;
+                    break;
             }
+            e.setCancelled(true);
 
-        }
-
-        if (TITLE.equals(CREATE_MENU_TITLE)) {
+        } else if (TITLE.equals(CREATE_MENU_TITLE)) {
             p.sendMessage("Create Menu");
             switch (e.getCurrentItem().getType()) {
                 case ARMOR_STAND:
                     p.sendMessage("Add Arms?");
                     MenuUtils.openConfirmMenu(p, Material.ARMOR_STAND);
-                    return;
+                    break;
                 case BEACON:
                     p.sendMessage("Give Glow?");
                     MenuUtils.openConfirmMenu(p, Material.BEACON);
-                    return;
+                    break;
                 case STONE_SLAB:
                     p.sendMessage("Add Base?");
                     MenuUtils.openConfirmMenu(p, Material.STONE_SLAB);
-                    return;
+                    break;
                 case GREEN_WOOL:
                     p.sendMessage("Create Armor");
-                    return;
+                    break;
                 case RED_WOOL:
                     p.sendMessage("Cancel");
                     p.closeInventory();
-                    return;
+                    break;
 
                 default:
                     p.sendMessage("not found block");
-                    return;
+                    break;
             }
+            e.setCancelled(true);
         }
     }
 }
